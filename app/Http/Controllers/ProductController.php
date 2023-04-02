@@ -40,17 +40,12 @@ class ProductController extends Controller
     {
         $msg = "";
 
-        $code = $request->code;
-        $amount = $request->amount;
-        $name = $request->name;
-        $value = $request->value;
-
         try {
             $product = new Product();
-            $product->code = $code;
-            $product->amount = $amount;
-            $product->name = $name;
-            $product->value = $value;
+            $product->code = $request->code;
+            $product->amount = $request->amount;
+            $product->name = $request->name;
+            $product->value = $request->value;
             $product->save();
             $msg = "Produto salvo!";
 
@@ -65,18 +60,13 @@ class ProductController extends Controller
     {
         $msg = "";
 
-        $code = $request->code;
-        $amount = $request->amount;
-        $name = $request->name;
-        $value = $request->value;
-
         try {
             $product = new Product();
-            $product->code = $code;
-            $product->amount = $amount;
-            $product->name = $name;
-            $product->value = $value;
-            $product->update();
+            $product->code = $request->code;
+            $product->amount = $request->amount;
+            $product->name = $request->name;
+            $product->value = $request->value;
+            $product->save();
             $msg = "Produto alterado!";
 
         } catch (\Throwable $e) {
@@ -97,7 +87,7 @@ class ProductController extends Controller
     {
         $product = new Product();
         $product = $product->findOrFail($id);
-        $product->destroy();
+        $product->delete();
         return redirect('/')->with('msg', 'Produto excluído!');
     }
 }
